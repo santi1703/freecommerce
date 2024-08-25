@@ -19,3 +19,9 @@
 - You will be able to access the project from the public directory from a web browser, on the url provided
 by the engine you are running it on (i.e. http://localhost/freecommerce/public); you can further manage the rules
 of the engine to redirect to a fancier url
+
+---
+
+We can discuss anything related to the design and decisions made on a meeting if you would like to
+
+Have a nice day :)
