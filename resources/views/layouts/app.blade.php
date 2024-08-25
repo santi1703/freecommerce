@@ -27,6 +27,12 @@
                 </header>
             @endisset
 
+            @if(session()->has('message'))
+                <div class="mt-3 mb-3 rounded w-full bg-blue-100 text-blue-500 text-2xl border-2 text-center">
+                    {{ ucfirst(session()->get('message')) }}
+                </div>
+            @endif
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}
