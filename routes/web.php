@@ -14,24 +14,6 @@ Route::get('/', function () {
     return redirect('login');
 });
 
-Route::get('/purchase', function () {
-    $quantity = 5;
-
-    Purchase::create([
-        'user_id' => User::first()->id,
-        'total' => Product::first()->price * $quantity,
-    ]);
-
-    DB::table('product_purchase')
-        ->insert([
-            'product_id' => Product::first()->id,
-            'purchase_id' => Purchase::first()->id,
-            'quantity' => $quantity,
-        ]);
-
-    return view('welcome');
-});
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -46,14 +28,6 @@ Route::middleware('auth')->group(function () {
             'products' => $products,
         ]);
     })->name('dashboard');
-
-    Route::get('/chart', function () {
-        $chart = collect(['cosa' => 1]);
-
-        return view('chart')->with([
-            'chart' => $chart,
-        ]);
-    })->name('chart');
 
     Route::prefix('chart')->group(function () {
         Route::get('/', [ChartController::class, 'view'])->name('chart.view');
